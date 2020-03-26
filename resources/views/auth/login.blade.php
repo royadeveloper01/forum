@@ -61,7 +61,8 @@
                                 </a>
                                 
                                 <a href="{{ route('social.oauth', 'github') }}" class="btn btn-default btn-primary">
-                                    Login with Github
+                                    <i class="fa fa-github">Login with Github</i>
+
                                 </a>
 
                                 @if (Route::has('password.request'))
