@@ -42,5 +42,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/edit/{id}', 'ChannelsController@edit')->name('channels.edit');
     Route::put('/editChannel/{id}', 'ChannelsController@editChannel')->name('channels.update');
     Route::get('/delete/{id}', 'ChannelsController@destroy');
+
+// Route for discussions
+    Route::get('/discussions/create', 'DiscussionsController@create');
+    Route::post('/discussions/store', 'DiscussionsController@store');
 });
 
