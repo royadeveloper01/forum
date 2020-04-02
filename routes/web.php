@@ -36,7 +36,7 @@ Route::get('{driver}/callback', 'Auth\GithubController@handleProviderCallback')-
 // Route for CRUD channels
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/channels', 'ChannelsController@index')->name('channels.index');
-    Route::get('/channels/create', 'ChannelsController@create');
+    Route::get('/channel/create', 'ChannelsController@create');
     Route::post('/channels', 'ChannelsController@store')->name('channels.store');
     Route::get('/{channel}', 'ChannelsController@show');
     Route::get('/edit/{id}', 'ChannelsController@edit')->name('channels.edit');
@@ -46,6 +46,6 @@ Route::group(['middleware' => 'auth'], function(){
 // Route for discussions
     Route::get('/discussion/create', 'DiscussionsController@create');
     Route::post('/discussions/store', 'DiscussionsController@store');
-    Route::get('/discussion', 'DiscussionsController@show');
+    Route::get('/discussion/{slug}', 'DiscussionsController@show')->name('discussion');
 });
 

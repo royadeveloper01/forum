@@ -5,7 +5,8 @@
            @foreach($discussions as $d)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <img src="{{ $d->user->name }}" alt="" width="70px" height="70px">
+                        <img src="{{ $d->user->avatar }}" alt="{{ $d->user->avatar }}" 
+                        width="70px" height="70px">
                     </div>
 
                     <div class="panel-body">

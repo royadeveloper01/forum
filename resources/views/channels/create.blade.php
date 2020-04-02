@@ -10,7 +10,13 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <input type="text" name="channel" class="form-control">
+                            <input id="channel" type="text" name="channel" class="form-control @error('name') is-invalid @enderror"
+                            name="channel" value="{{ old('channel') }}" required autocomplete="channel" autofocus>
+                                @error('channel')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                @enderror
                         </div>
 
                         <div class="form-group">
