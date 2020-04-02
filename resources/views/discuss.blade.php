@@ -2,12 +2,19 @@
 
 @section('content')
 <div class="card">
+        @if(session('response'))
+            <div class="alert alert-success">{{session('response')}}</div>
+        @endif
     <div class="card-header text-center">Create a new discussion</div>
 
     <div class="card-body">
         <form action="{{ url('discussions/store') }}" method="post">
             {{ csrf_field() }}
 
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="form-control">
+            </div>
             <div class="form-group">
                 <label for="channel">Pick a channel</label>
                 <select name="channel_id" id="channel_id" class="form-control">

@@ -38,7 +38,7 @@ class ChannelsController extends Controller
     
     public function editChannel(Request $request, $id){
         $channels = Channel::findOrFail($id);
-        $channels->title = $request->title;
+        $channels->title = $request->channel;
         $channels->update();
         return redirect('/channels')->with('response', 'Channel Updated Successfully');
     }

@@ -75,12 +75,12 @@
         <main class="py-4">
                 
             <div class="container">
-                <div class="col-md-4">
-                    <a href="{{ url('discussions/create') }}" class="form-control btn btn-primary">Create a new discussion</a>
+                <div class="col-md-4" style="float:left">
+                    <a href="{{ url('discussion/create') }}" class="form-control btn btn-primary">Create a new discussion</a>
                     <br>
                     <br>
                     <div class="panel panel-default">
-                        <div class="card-header">
+                        <div class="panel-heading">
                             Channels
                         </div>
 
@@ -96,7 +96,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-8">
+                <div class="col-md-8" style="float:left">
                     @yield('content')
                 </div>
 
