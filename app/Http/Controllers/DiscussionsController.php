@@ -15,7 +15,7 @@ class DiscussionsController extends Controller
         return view('discuss');
     }
 
-    public function store(Request $request, $slug){
+    public function store(Request $request){
 
         $this->validate($request,[
             'title' => 'required',
@@ -32,7 +32,7 @@ class DiscussionsController extends Controller
             'slug' => Str::slug($request->title)
         ]);
 
-        return redirect('/discussion', ['slug' => $discussions->slug])->with('response', 'Discussion created successfully');
+        return redirect()->route('discussion', ['slug' => $discussions->slug])->with('response', 'Discussion created successfully');
     }
 
     public function show($slug){

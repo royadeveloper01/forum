@@ -11,7 +11,13 @@
                         {{ method_field('PUT') }}
 
                         <div class="form-group">
-                            <input type="text" name="channel" value="{{ $channel->title }}" class="form-control">
+                            <input id="channel" type="text" name="channel" value="{{ $channel->title }}" 
+                            class="form-control @error('name') is-invalid @enderror" required autocomplete="channel" autofocus>
+                                @error('channel')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                @enderror
                         </div>
 
                         <div class="form-group">
