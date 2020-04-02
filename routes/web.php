@@ -21,7 +21,7 @@ Route::get('/discuss', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/forum', 'ForumsController@index')->name('forum');
 
 // Route for Google Auth
 Route::get('auth/social', 'Auth\GoogleController@show')->name('social.login');
@@ -44,7 +44,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/delete/{id}', 'ChannelsController@destroy');
 
 // Route for discussions
-    Route::get('/discussions/create', 'DiscussionsController@create');
+    Route::get('/discussion/create', 'DiscussionsController@create');
     Route::post('/discussions/store', 'DiscussionsController@store');
+    Route::get('/discussion', 'DiscussionsController@show');
 });
 

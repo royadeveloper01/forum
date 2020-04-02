@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Discussion;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Redirect;
+
 
 class DiscussionsController extends Controller
 {
@@ -10,7 +15,28 @@ class DiscussionsController extends Controller
         return view('discuss');
     }
 
-    public function store(){
-        dd(request());
+    public function store(Request $request, $slug){
+
+        $this->validate($request,[
+            'title' => 'required',
+            'channel_id' => 'required',
+            'content'=> 'required',
+
+        ]);
+
+        $discussions = Discussion::create([
+            'title' => $request->title,
+            'channel_id' => $request->channel_id,
+            'content' => $request->content,
+            'user_id' => Auth::id(),
+            'slug' => Str::slug($request->title)
+        ]);
+
+        return redirect('/discussion', ['slug' => $discussions->slug])->with('response', 'Discussion created successfully');
     }
+
+    public function show($slug){
+        return view('discussions.show')->with('discussion', Discussion::where('slug', $slug)->first());
+    }
+    
 }
