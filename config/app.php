@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => 'https://royalforum.herokuapp.com',
+    'url' => 'http://localhost:8000',
 
     'asset_url' => env('ASSET_URL', null),
 

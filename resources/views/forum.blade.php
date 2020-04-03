@@ -3,18 +3,34 @@
 @section('content')
 
            @foreach($discussions as $d)
-                <div class="panel panel-default">
-                    <div class="panel-heading">
+                <div class="card bg-light">
+                    <div class="card-header">
                         <img src="{{ $d->user->avatar }}" alt="{{ $d->user->avatar }}" 
-                        width="70px" height="70px">
+                        width="40px" height="40px">&nbsp;&nbsp;&nbsp;
+                        <span>{{ $d->user->name }}</span>
+                        <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-secondary btn-sm float-right">view</a>
                     </div>
 
-                    <div class="panel-body">
-                        {{ $d->content }}
+                    <div class="card-body">
+                        <h5 class="text-center">
+                            {{ $d->title }}
+                        </h5>
+
+                        <p class="text-center"> 
+                            {{ Str::limit($d->content,50) }}
+                        </p>
                     </div>
                 </div>
+
+                <div class="card-footer">
+                    <p>
+                        {{ $d->replies->count() }}Replies
+                    </p>
+                </div>
+                <br>
            @endforeach
-           <div class="text-center">
+
+           <div class="float-center">
                 {{ $discussions->links() }}
            </div>
 @endsection

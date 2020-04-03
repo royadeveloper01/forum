@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         App\User::create([
-            'name' => 'admin',
+            'name' => 'Admin',
             'password' => bcrypt('password'),
             'email' => 'admin@royalforum.herokuapp.com',
             'admin' => 1,

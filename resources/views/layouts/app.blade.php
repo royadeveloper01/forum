@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
@@ -79,12 +80,12 @@
                     <a href="{{ url('discussion/create') }}" class="form-control btn btn-primary">Create a new discussion</a>
                     <br>
                     <br>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card">
+                        <div class="card-header">
                             Channels
                         </div>
 
-                        <div class="panel-body">
+                        <div class="card-body">
                             <ul class="list-group">
                                 @foreach($channels as $channel)
                                     <li class="list-group-item">
