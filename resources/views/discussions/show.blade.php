@@ -2,12 +2,13 @@
 
 @section('content')
 
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
+            
             <div class="card bg-light">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                     <div class="card-header">
                         <img src="{{ $d->user->avatar }}" alt="{{ $d->user->avatar }}" 
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
@@ -61,7 +62,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('discussion.reply', ['id' => $id->id]) }}" method="POST">
+                    <form action="{{ route('discussion.reply', ['id' => $d->id]) }}" method="POST">
                         {{ csrf_field() }}
                     
                         <div class="form-group">

@@ -31,7 +31,7 @@
                 <br>
            @endforeach
 
-           <div class="float-center">
+           <div class="text-center">
                 {{ $discussions->links() }}
            </div>
 @endsection
