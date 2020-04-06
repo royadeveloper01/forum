@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Discussion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Redirect;
 use App\Reply;
-
 
 class DiscussionsController extends Controller
 {
@@ -40,16 +38,20 @@ class DiscussionsController extends Controller
         return view('discussions.show')->with('d', Discussion::where('slug', $slug)->first());
     }
     
-    public function reply(Request $request, $id){
+    public function reply($id){
 
-        $replies = Discussion::find($id);
-        $replies = Reply::create([
+        $d = Discussion::find($id);
+
+        $reply = Reply::create([
         'user_id' => Auth::id(),
         'discussion_id' => $id,
-        'content' => $request->reply,
+        'content' => request()->reply,
         ]);
-        dd($replies);
-        // return redirect()->back()->with('response', 'Replied to Discussion');
+
+        
+        return back()->with('response', 'Replied to Discussion');
+
+        
 
     }
 }
