@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Channel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ChannelsController extends Controller
 {
@@ -21,11 +22,12 @@ class ChannelsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'channel' => 'required'
+            'channel' => 'required',
         ]);
 
         Channel::create([
-            'title'=> $request->channel
+            'title'=> $request->channel,
+            'slug' => Str::slug($request->channel)
         ]);
 
         return redirect('/channels')->with('response', 'Channel Created Successfully');
@@ -39,6 +41,7 @@ class ChannelsController extends Controller
     public function editChannel($id){
         $channels = Channel::findOrFail($id);
         $channels->title = request()->channel;
+        $channels->slug = Str::slug(request()->channel);
         $channels->update();
         return redirect('/channels')->with('response', 'Channel Updated Successfully');
     }
