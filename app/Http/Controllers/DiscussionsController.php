@@ -38,20 +38,4 @@ class DiscussionsController extends Controller
         return view('discussions.show')->with('d', Discussion::where('slug', $slug)->first());
     }
     
-    public function reply($id){
-
-        $d = Discussion::find($id);
-
-        $reply = Reply::create([
-        'user_id' => Auth::id(),
-        'discussion_id' => $id,
-        'content' => request()->reply,
-        ]);
-
-        
-        return back()->with('response', 'Replied to Discussion');
-
-        
-
-    }
 }
