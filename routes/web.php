@@ -33,6 +33,10 @@ Route::get('auth/social', 'Auth\GithubController@show')->name('social.login');
 Route::get('oauth/{driver}', 'Auth\GithubController@redirectToProvider')->name('social.oauth');
 Route::get('{driver}/callback', 'Auth\GithubController@handleProviderCallback')->name('social.callback');
 
+// Route for the Slug
+Route::get('/discussion/{slug}', 'DiscussionsController@show')->name('discussion');
+Route::get('/channel/{slug}', 'ForumsController@channel')->name('channel');
+
 // Route for CRUD channels
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/channels', 'ChannelsController@index')->name('channels.index');
@@ -46,7 +50,6 @@ Route::group(['middleware' => 'auth'], function(){
 // Route for Discussions
     Route::get('/discussion/create', 'DiscussionsController@create');
     Route::post('/discussions/store', 'DiscussionsController@store');
-    Route::get('/discussion/{slug}', 'DiscussionsController@show')->name('discussion');
 
 // Route for Reply, Like And Unlike
     Route::post('/discussion/reply/{id}', 'RepliesController@reply')->name('discussion.reply');
