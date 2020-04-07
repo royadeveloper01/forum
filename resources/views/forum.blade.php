@@ -9,7 +9,8 @@
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 
                         <span>{{ $d->user->name }} <b>{{ $d->created_at->diffForHumans() }}</b></span>
-                        <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-secondary btn-sm float-right">view</a>
+                        <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-secondary btn-sm float-right">
+                            <i class="fas fa-eye">View</i></a>
                     </div>
 
                     <div class="card-body">
@@ -24,9 +25,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <p>
-                        {{ $d->replies->count() }} Replies
-                    </p>
+                    <span class="badge badge-pill badge-info">{{ $d->replies->count() }} Replies</span>
                 </div>
                 <br>
            @endforeach

@@ -34,11 +34,13 @@
                                     <td>{{ $channel->title}}</td>
 
                                     <td>
-                                        <a href='{{ url("/edit/{$channel->id}") }}' class="btn btn-xs btn-info">Edit</a>
+                                        <a href='{{ url("/edit/{$channel->id}") }}' class="btn btn-xs btn-info">
+                                        <i class="far fa-edit">Edit</i></a>
                                     </td>
 
                                     <td>
-                                        <a href='{{ url("/delete/{$channel->id}") }}' class="btn btn-xs btn-danger">Delete</a>
+                                        <a href='{{ url("/delete/{$channel->id}") }}' class="btn btn-xs btn-danger">
+                                    Delete<i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

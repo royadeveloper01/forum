@@ -77,7 +77,7 @@
                 
             <div class="container">
                 <div class="col-md-4" style="float:left">
-                    <a href="{{ url('discussion/create') }}" class="form-control btn btn-primary">Create a new discussion</a>
+                    <a href="{{ url('discussion/create') }}" class="form-control btn btn-primary">Create a new discussion <i class="fas fa-pencil-alt"></i></a>
                     <br>
                     <br>
                     <div class="card">

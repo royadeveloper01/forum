@@ -14,7 +14,8 @@
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 
                         <span>{{ $d->user->name }} <b>{{ $d->created_at->diffForHumans() }}</b></span>
-                        <a href="{{ route('discussion', ['slug' => $d->slug]) }}" class="btn btn-secondary btn-sm float-right">view</a>
+                        <a href="{{ route('discussion', ['slug' => $d->slug]) }}" 
+                            class="btn btn-secondary btn-sm float-right"><i class="fas fa-eye">View</i></a>
                     </div>
 
                     <div class="card-body">
@@ -30,7 +31,7 @@
             </div>
 
             <div class="card-footer">
-                <p>{{ $d->replies->count() }} Replies</p>
+                <span class="badge badge-pill badge-info">{{ $d->replies->count() }} Replies</span>
             </div>
             <br>
 
@@ -55,7 +56,13 @@
                 </div>
 
                 <div class="card-footer">
-                    LIKE
+                    @if($r->is_liked_by_auth_user())
+                        <a href="{{ route('reply.unlike', ['id' => $r->id]) }}" class="btn btn-danger btn-sm">
+                            <i class="fas fa-thumbs-down">Unlike <span class="badge badge-light">{{ $r->likes->count() }}</span></i></a>
+                    @else
+                        <a href="{{ route('reply.like', ['id' => $r->id]) }}" class="btn btn-success btn-sm">
+                            <i class="fas fa-thumbs-up">Like <span class="badge badge-light">{{ $r->likes->count() }}</span></i></a>
+                    @endif
                 </div>
             </div>
             @endforeach

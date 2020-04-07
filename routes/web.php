@@ -43,10 +43,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/editChannel/{id}', 'ChannelsController@editChannel')->name('channels.update');
     Route::get('/delete/{id}', 'ChannelsController@destroy');
 
-// Route for discussions
+// Route for Discussions
     Route::get('/discussion/create', 'DiscussionsController@create');
     Route::post('/discussions/store', 'DiscussionsController@store');
     Route::get('/discussion/{slug}', 'DiscussionsController@show')->name('discussion');
-    Route::post('/discussion/reply/{id}', 'DiscussionsController@reply')->name('discussion.reply');
+
+// Route for Reply, Like And Unlike
+    Route::post('/discussion/reply/{id}', 'RepliesController@reply')->name('discussion.reply');
+    Route::get('/reply/like/{id}', 'RepliesController@like')->name('reply.like');
+    Route::get('/reply/unlike/{id}', 'RepliesController@unlike')->name('reply.unlike');
 });
 
