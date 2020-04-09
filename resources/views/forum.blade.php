@@ -26,6 +26,7 @@
 
                 <div class="card-footer">
                     <span class="badge badge-pill badge-info">{{ $d->replies->count() }} Replies</span>
+                    <a href="{{ route('channel', ['slug' => $d->channel->slug]) }}" class="float-right btn btn-primary btn-sm">{{ $d->channel->title }}</a>
                 </div>
                 <br>
            @endforeach
