@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/delete/{id}', 'ChannelsController@destroy');
 
 // Route for Discussions
-    Route::get('/discussion/create', 'DiscussionsController@create');
+    Route::get('/discussion/create/new', 'DiscussionsController@create');
     Route::post('/discussions/store', 'DiscussionsController@store');
 
 // Route for Reply, Like And Unlike

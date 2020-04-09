@@ -69,19 +69,25 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('discussion.reply', ['id' => $d->id]) }}" method="POST">
-                        {{ csrf_field() }}
-                    
-                        <div class="form-group">
-                            <label for="reply">Leave a reply...</label>
-                            <textarea name="reply" id="reply" cols="20" rows="10" 
-                            class="form-control" required autocomplete="reply" autofocus></textarea>
-                        </div>
+                    @if(Auth::check())
+                        <form action="{{ route('discussion.reply', ['id' => $d->id]) }}" method="POST">
+                            {{ csrf_field() }}
+                                
+                            <div class="form-group">
+                                <label for="reply">Leave a reply...</label>
+                                <textarea name="reply" id="reply" cols="20" rows="10" 
+                                class="form-control" required autocomplete="reply" autofocus></textarea>
+                            </div>
 
-                        <div class="form-group">
-                            <button class="btn btn-success float-right">Leave a Reply</button>
+                            <div class="form-group">
+                                <button class="btn btn-success float-right">Leave a Reply</button>
+                            </div>
+                        </form> 
+                    @else
+                        <div class="text-center">
+                            <h2><b>Sign in to leave a Reply</b></h2>
                         </div>
-                    </form>
-                </div>
+                    @endif
+               </div>
             </div>
 @endsection

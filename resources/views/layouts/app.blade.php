@@ -77,10 +77,23 @@
                 
             <div class="container">
                 <div class="col-md-4" style="float:left">
-                    <a href="{{ url('discussion/create') }}" class="form-control btn btn-primary">
+                    <a href="{{ url('discussion/create/new') }}" class="form-control btn btn-primary">
                         Create a new discussion<i class="fas fa-pencil-alt"></i></a>
                     <br>
                     <br>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="/forum" style="text-decoration: none">Home</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+
                     <div class="card">
                         <div class="card-header">
                             Channels
