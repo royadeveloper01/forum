@@ -14,8 +14,13 @@
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 
                         <span>{{ $d->user->name }} <b>{{ $d->created_at->diffForHumans() }}</b></span>
-                        <a href="{{ route('discussion', ['slug' => $d->slug]) }}" 
-                            class="btn btn-secondary btn-sm float-right"><i class="fas fa-eye">View</i></a>
+                        @if($d->is_being_watched_by_auth_user())
+                            <a href="{{ route('discussion.unwatch',['id' => $d->id]) }}" 
+                                class="btn btn-secondary btn-sm float-right"><i class="far fa-eye-slash">Unwatch</i></a>
+                        @else
+                            <a href="{{ route('discussion.watch',['id' => $d->id]) }}" 
+                                class="btn btn-secondary btn-sm float-right"><i class="far fa-eye">Watch</i></a>
+                        @endif
                     </div>
 
                     <div class="card-body">
