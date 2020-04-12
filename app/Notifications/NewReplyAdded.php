@@ -6,19 +6,22 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use App\Discussion;
 
 class NewReplyAdded extends Notification
 {
     use Queueable;
+
+    public $discussion;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($d)
     {
-        //
+        $this->discussion = $d;
     }
 
     /**
@@ -40,9 +43,11 @@ class NewReplyAdded extends Notification
      */
     public function toMail($notifiable)
     {
+        
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->greeting("Hello!")
+                    ->line('New reply on the discussion you viewed.')
+                    ->action('View Discussion', route('discussion', ['slug' => $this->discussion->slug ]))
                     ->line('Thank you for using our application!');
     }
 

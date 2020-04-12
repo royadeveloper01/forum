@@ -9,6 +9,9 @@ use App\Like;
 use App\User;
 use Illuminate\Http\Request;
 use App\Reply;
+// use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
+// use App\Notification;
 
 class RepliesController extends Controller
 {
@@ -29,7 +32,7 @@ class RepliesController extends Controller
             array_push($watchers, User::find($watcher->user_id));
         endforeach;
 
-        dd($watchers);
+        Notification::send($watchers, new \App\Notifications\NewReplyAdded($d));
 
         Session()->flash('success', 'Replied to Discussion');
 
