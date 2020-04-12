@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Reply;
+use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Discussion;
 use App\Like;
+use App\User;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use App\Reply;
 
 class RepliesController extends Controller
 {
@@ -21,7 +22,18 @@ class RepliesController extends Controller
         'content' => request()->reply,
         ]);
 
-        return back()->with('response', 'Replied to Discussion');
+
+        $watchers = array();
+
+        foreach ($d->watchers as $watcher):
+            array_push($watchers, User::find($watcher->user_id));
+        endforeach;
+
+        dd($watchers);
+
+        Session()->flash('success', 'Replied to Discussion');
+
+        return redirect()->back();
     }
 
     public function like($id){
