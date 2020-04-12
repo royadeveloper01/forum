@@ -38,4 +38,5 @@ class DiscussionsController extends Controller
         return view('discussions.show')->with('d', Discussion::where('slug', $slug)->first());
     }
     
+    
 }
