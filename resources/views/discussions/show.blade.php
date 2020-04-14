@@ -13,7 +13,7 @@
                         <img src="{{ $d->user->avatar }}" alt="{{ $d->user->avatar }}" 
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 
-                        <span>{{ $d->user->name }} <b>{{ $d->created_at->diffForHumans() }}</b></span>
+                        <span>{{ $d->user->name }} <b>( {{ $d->user->points }} )</b></span>
                         @if($d->is_being_watched_by_auth_user())
                             <a href="{{ route('discussion.unwatch',['id' => $d->id]) }}" 
                                 class="btn btn-secondary btn-sm float-right"><i class="far fa-eye-slash">Unwatch</i></a>
@@ -42,7 +42,7 @@
                                         <div class="card-header">
                                             <img src="{{ $best_answer->user->avatar }}" alt="{{ $best_answer->user->avatar }}" 
                                                 width="40px" height="40px">&nbsp;&nbsp;&nbsp;
-                                            <span>{{ $best_answer->user->name }}</span>
+                                            <span>{{ $best_answer->user->name }} <b>( {{ $best_answer->user->points }} )</b></span>
                                         </div>
                                         <div class="card-body">
                                                 {{ $best_answer->content }}
@@ -65,7 +65,7 @@
                         <img src="{{ $r->user->avatar }}" alt="{{ $r->user->avatar }}" 
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 
-                        <span>{{ $r->user->name }} <b>{{ $r->created_at->diffForHumans() }}</b></span>
+                        <span>{{ $r->user->name }} <b>( {{ $r->user->points }} )</b></span>
                         @if(!$best_answer)
                             <a href="{{ route('reply.best', ['id' => $r->id]) }}" class="btn btn-info btn-sm float-right">Mark as best Answer</a>
                         @endif
