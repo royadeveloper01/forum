@@ -25,6 +25,8 @@ class RepliesController extends Controller
         'content' => request()->reply,
         ]);
 
+        $reply->user->points += 25;
+        $reply->user->save();
 
         $watchers = array();
 
@@ -67,6 +69,9 @@ class RepliesController extends Controller
         $reply->best_answer = 1;
         $reply->save();
 
+        $reply->user->points += 100;
+        $reply->user->save();
+        
         Session()->flash('success', 'Reply has been marked as best answer');
 
         return redirect()->back();
