@@ -51,11 +51,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/discussion/create/new', 'DiscussionsController@create');
     Route::post('/discussions/store', 'DiscussionsController@store');
 
-// Route for Reply, Like, Unlike, Watch and Unwatch
+// Route for Reply, Like, Unlike, Watch, Unwatch and Best Answer
     Route::post('/discussion/reply/{id}', 'RepliesController@reply')->name('discussion.reply');
     Route::get('/reply/like/{id}', 'RepliesController@like')->name('reply.like');
     Route::get('/reply/unlike/{id}', 'RepliesController@unlike')->name('reply.unlike');
     Route::get('discussion/watch/{id}', 'WatchersController@watch')->name('discussion.watch');
     Route::get('discussion/unwatch/{id}', 'WatchersController@unwatch')->name('discussion.unwatch');
+    Route::get('discussion/reply/best/{id}', 'RepliesController@best_answer')->name('reply.best');
 });
 

@@ -32,6 +32,24 @@
                         <p class="text-center"> 
                             {{ $d->content }}
                         </p>
+
+                        <hr>
+
+                        @if($best_answer)
+                                <div class="text-center" style="padding:40px">
+                                    <h3 class="text-center">Best Answer</h3>
+                                    <div class="card bg-success">
+                                        <div class="card-header">
+                                            <img src="{{ $best_answer->user->avatar }}" alt="{{ $best_answer->user->avatar }}" 
+                                                width="40px" height="40px">&nbsp;&nbsp;&nbsp;
+                                            <span>{{ $best_answer->user->name }}</span>
+                                        </div>
+                                        <div class="card-body">
+                                                {{ $best_answer->content }}
+                                        </div>
+                                    </div>
+                                </div>
+                        @endif
                     </div>
             </div>
 
@@ -48,6 +66,9 @@
                         width="40px" height="40px">&nbsp;&nbsp;&nbsp;
 
                         <span>{{ $r->user->name }} <b>{{ $r->created_at->diffForHumans() }}</b></span>
+                        @if(!$best_answer)
+                            <a href="{{ route('reply.best', ['id' => $r->id]) }}" class="btn btn-info btn-sm float-right">Mark as best Answer</a>
+                        @endif
                 </div>
 
                 <div class="card-body">
